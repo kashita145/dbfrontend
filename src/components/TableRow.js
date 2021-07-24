@@ -1,9 +1,9 @@
 import Button from "react-bootstrap/Button";
 import Modal from "./MyModal";
 import { useState } from "react";
-import { FaStop } from "react-icons/fa";
-import { Icon } from "@iconify/react";
-import infoCircleOutlined from "@iconify-icons/ant-design/info-circle-outlined";
+//import { FaStop } from "react-icons/fa";
+//import { Icon } from "@iconify/react";
+//import infoCircleOutlined from "@iconify-icons/ant-design/info-circle-outlined";
 
 const TableRow = ({ process, index, running, stopProcess }) => {
   const [show, setShow] = useState(false);
