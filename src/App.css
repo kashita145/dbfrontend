@@ -1,0 +1,326 @@
+/* * {
+  background-color: var(--bg) !important;
+} */
+
+.App {
+  --bg: #f2f6ff;
+  --primary: #2e52da;
+  --secondary: #1ccef4;
+  --shadow: #f0f2f8;
+  --dark: #232b2b;
+  --hover-dark: #292639;
+  text-align: center;
+  background-color: var(--bg) !important;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: all 0.5s ease-in !important;
+  font-size: 14px !important;
+  border-radius: 20px 20px 0px 0px !important;
+}
+
+a {
+  font-size: 16px !important;
+  color: var(--shadow) !important;
+  text-decoration: underline !important;
+}
+
+a:hover {
+  transition: all 0.25s ease-in-out !important;
+  color: var(--secondary) !important;
+}
+
+nav {
+  display: flex !important;
+  background-color: var(--dark) !important;
+  height: 60px !important;
+}
+
+.nav-link {
+  font-size: 16px !important;
+  color: #d9d9dd !important;
+  text-decoration: none !important;
+}
+
+.nav-link:hover {
+  color: var(--bg) !important;
+  background-color: var(--hover-dark);
+  border-radius: 6px !important;
+}
+
+.custom-brand {
+  color: #f0f2f8 !important;
+}
+
+.page-heading {
+  font-size: 24px !important;
+  font-weight: bold !important;
+  margin-top: 38px !important;
+}
+
+.custom-container {
+  min-height: calc(100vh - 66px) !important;
+  background-color: #fff !important;
+  border-radius: 9px !important;
+  padding: 18px 25px !important;
+  margin: 18px 0px 30px 0px !important;
+  box-shadow: 0 7px 30px -10px var(--shadow) !important;
+}
+
+.login-container {
+  height: calc(100vh - 126px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.login-btn {
+  width: 100% !important;
+  margin: auto !important;
+  margin-top: 20px !important;
+}
+
+.custom-btn-primary,
+.card-header > button {
+  background-color: #2e52da !important;
+  color: #fff !important;
+  border: 1px solid #2e52da !important;
+  padding: 6px 16px !important;
+  margin: 5px;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+}
+
+.custom-btn-primary:hover,
+.card-header > button:hover {
+  box-shadow: 0px 7px 10px -5px #0036f8 !important;
+  transition: all 0.5s ease !important;
+}
+
+.custom-btn-secondary {
+  background-color: #fff !important;
+  color: var(--primary) !important;
+  border: 1px solid var(--primary) !important;
+  padding: 6px 16px !important;
+  margin: 5px !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+}
+
+.custom-btn-secondary:hover {
+  background-color: var(--primary) !important;
+  color: #fff !important;
+  box-shadow: 0px 7px 10px -5px #4766d8b0 !important;
+}
+
+.modal-header {
+  border-bottom: 0 none !important;
+}
+
+.modal-title {
+  margin: auto !important;
+  justify-content: space-between !important;
+}
+
+.modal-pname {
+  font-size: 24px !important;
+  font-weight: bold;
+  margin-right: 30px;
+}
+
+.modal-mid {
+  font-size: 15px;
+  color: #333;
+}
+
+.modal-body {
+  font-family: Arial, Helvetica, sans-serif !important;
+  border-top: 0 none !important;
+  padding: 10px 30px !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+}
+
+.modal-content {
+  margin: auto !important;
+  border: none !important;
+  text-align: center !important;
+  padding: 10px 15px !important;
+}
+
+.custom-list {
+  display: flex !important;
+  justify-content: space-between !important;
+  text-align: center !important;
+  margin: 5px 0px !important;
+}
+
+.modal-status {
+  margin: auto !important;
+  margin-top: 10px !important;
+  font-size: 30px !important;
+  font-weight: 600 !important;
+}
+
+.modal-body > ul {
+  margin: auto !important;
+}
+
+.modal-value {
+  text-align: right !important;
+  color: #2e52da !important;
+}
+
+.modal-footer {
+  margin: auto !important;
+}
+
+.disabled,
+.disabled-hover {
+  /* border: 1px solid #333 !important; */
+  border: none !important;
+  background-color: rgb(221, 218, 218) !important;
+  color: #333 !important;
+  padding: 6px 16px !important;
+  margin: 5px;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+}
+
+.stop {
+  color: var(--red) !important;
+  border: 1px solid var(--red) !important;
+}
+
+.red {
+  color: #e84118 !important;
+}
+
+.green {
+  color: #44bd32 !important;
+}
+
+.stop:hover {
+  color: #fff !important;
+  background-color: var(--red) !important;
+  box-shadow: 0px 7px 10px -5px rgb(218, 48, 48) !important;
+}
+
+.card-header {
+  background-color: transparent !important;
+  border: none !important;
+  justify-content: space-between !important;
+  display: flex !important;
+}
+
+.card {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.acc-body {
+  background-color: transparent !important;
+  padding: 10px 16px !important;
+}
+
+.form {
+  display: flex !important;
+  justify-content: space-around !important;
+}
+
+.form-label {
+  font-weight: bold !important;
+}
+
+.form-control {
+  height: 40px !important;
+  max-width: 100% !important;
+  border-radius: 8px !important;
+  margin: auto !important;
+}
+
+.dropdown-toggle {
+  color: var(--primary) !important;
+  background-color: transparent !important;
+  border: 1px solid var(--primary) !important;
+  padding: 6px 16px !important;
+  margin: 5px !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+}
+
+td {
+  font-size: 15px !important;
+  letter-spacing: 0.25px;
+  border-color: transparent !important;
+}
+
+tr:hover {
+  background-color: var(--bg) !important;
+  vertical-align: middle !important;
+}
+
+.status {
+  font-weight: bold;
+  padding: 4px;
+  margin: 5% auto 0px auto;
+  width: 90%;
+  border-radius: 8px !important;
+}
+
+/* .stopped {
+  color: rgb(211, 137, 0) !important;
+  background-color: rgb(250, 235, 209);
+} */
+
+.completed {
+  color: green;
+  background-color: rgb(219, 247, 179);
+}
+
+.failed,
+.stopped {
+  color: red;
+  background-color: rgb(255, 220, 220);
+}
+
+.footer {
+  margin: auto;
+  font-size: 13px;
+  letter-spacing: 0.35px;
+  padding: 10px !important;
+  background-color: var(--dark) !important;
+  color: #d9d9dd;
+  width: 60%;
+  border-radius: 100px 100px 0px 0px;
+}
+
+.footer-text-main {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+.footer > a {
+  font-size: 13px !important;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
