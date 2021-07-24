@@ -1,6 +1,5 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-import heartFilled from "@iconify-icons/ant-design/heart-filled";
 
 const Footer = () => {
   return (
