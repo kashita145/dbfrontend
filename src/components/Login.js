@@ -20,10 +20,13 @@ function Login() {
     event.preventDefault();
 
     axios
-      .post("http://localhost:4000/api/server/login", {
-        username: username,
-        password: password,
-      })
+      .post(
+        "http://main-server-process-server-2.apps.123.252.203.198.nip.io/api/server/login",
+        {
+          username: username,
+          password: password,
+        }
+      )
       .then((response) => {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("username", response.data.username);

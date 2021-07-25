@@ -10,7 +10,8 @@ import Login from "./components/Login";
 import authHeader from "./auth.js";
 
 function App() {
-  const MAIN_SERVER = "http://localhost:4000/";
+  const MAIN_SERVER =
+    "http://main-server-process-server-2.apps.123.252.203.198.nip.io/";
 
   const [processes, setProcesses] = useState([]);
   const [processNames, setProcessNames] = useState([]);
@@ -49,11 +50,12 @@ function App() {
       serverPort: serverId.port,
     };
 
-
     axios
-      .post("http://localhost:4000/api/server/processes/stop", msg, {  headers: 
-      authHeader()
-    })
+      .post(
+        "http://main-server-process-server-2.apps.123.252.203.198.nip.io/api/server/processes/stop",
+        msg,
+        { headers: authHeader() }
+      )
       .then((res) => {
         alert("Process stopped succesfully");
       })
@@ -65,9 +67,12 @@ function App() {
   //getting status of all processes
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/server/processes/status", {
-        headers: authHeader(),
-      })
+      .get(
+        "http://main-server-process-server-2.apps.123.252.203.198.nip.io/api/server/processes/status",
+        {
+          headers: authHeader(),
+        }
+      )
       .then((resp) => {
         setProcesses(resp.data);
       })
@@ -77,9 +82,12 @@ function App() {
 
     const interval = setInterval(() => {
       axios
-        .get("http://localhost:4000/api/server/processes/status", {
-          headers: authHeader(),
-        })
+        .get(
+          "http://main-server-process-server-2.apps.123.252.203.198.nip.io/api/server/processes/status",
+          {
+            headers: authHeader(),
+          }
+        )
         .then((resp) => {
           setProcesses(resp.data);
         })
@@ -93,9 +101,12 @@ function App() {
   //get request for all process names - stored in processNames
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/server/processes/processList")
+      .get(
+        "http://main-server-process-server-2.apps.123.252.203.198.nip.io/api/server/processes/processList"
+      )
       .then((resp) => {
         setProcessNames(resp.data);
+        console.log(resp.data);
       })
       .catch((err) => {
         console.log("Fetching server names failed");
@@ -105,9 +116,12 @@ function App() {
   //get request for all server names - stored in serverNames
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/server/processes/serverList")
+      .get(
+        "http://main-server-process-server-2.apps.123.252.203.198.nip.io/api/server/processes/serverList"
+      )
       .then((resp) => {
         setServerNames(resp.data);
+        console.log(resp.data);
       })
       .catch((err) => {
         console.log("Fetching server names failed");
@@ -126,7 +140,6 @@ function App() {
           filters={filters}
           stopProcess={stopProcess}
         />
-        
       </Route>
     </Router>
   );
