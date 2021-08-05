@@ -164,7 +164,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    completedProcesses = 0;s
+    completedProcesses = 0;
     runningProcesses = 0;
     stoppedProcesses = 0;
     for(process of processes){
