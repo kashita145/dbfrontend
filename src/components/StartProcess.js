@@ -48,7 +48,7 @@ const StartProcess = ({ processNames, serverNames }) => {
 
     axios
       .post(
-        "http://localhost:4000/api/server/processes/start",
+        "http://main-server-process-server-2.apps.123.252.203.198.nip.io/api/server/processes/start",
         {
           pname: process,
           sip: ipAddress,

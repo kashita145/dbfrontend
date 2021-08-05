@@ -10,7 +10,8 @@ import Login from "./components/Login";
 import authHeader from "./auth.js";
 
 function App() {
-  const MAIN_SERVER = "http://localhost:4000/";
+  const MAIN_SERVER =
+    "http://main-server-process-server-2.apps.123.252.203.198.nip.io/";
 
   const [processes, setProcesses] = useState([]);
   const [processNames, setProcessNames] = useState([]);
@@ -48,7 +49,6 @@ function App() {
       serverIp: serverId.ipAddress,
       serverPort: serverId.port,
     };
-
 
     axios
       .post("http://main-server-node-main-server.apps.123.252.203.198.nip.io/api/server/processes/stop", msg, {  headers: 
@@ -96,6 +96,7 @@ function App() {
       .get("http://main-server-node-main-server.apps.123.252.203.198.nip.io/api/server/processes/processList")
       .then((resp) => {
         setProcessNames(resp.data);
+        console.log(resp.data);
       })
       .catch((err) => {
         console.log("Fetching server names failed");
@@ -108,6 +109,7 @@ function App() {
       .get("http://main-server-node-main-server.apps.123.252.203.198.nip.io/api/server/processes/serverList")
       .then((resp) => {
         setServerNames(resp.data);
+        console.log(resp.data);
       })
       .catch((err) => {
         console.log("Fetching server names failed");
@@ -126,7 +128,6 @@ function App() {
           filters={filters}
           stopProcess={stopProcess}
         />
-        
       </Route>
     </Router>
   );

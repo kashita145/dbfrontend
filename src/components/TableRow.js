@@ -1,9 +1,9 @@
 import Button from "react-bootstrap/Button";
 import Modal from "./MyModal";
 import { useState } from "react";
-import { FaStop } from "react-icons/fa";
-import { Icon } from "@iconify/react";
-import infoCircleOutlined from "@iconify-icons/ant-design/info-circle-outlined";
+//import { FaStop } from "react-icons/fa";
+// import { Icon } from "@iconify/react";
+// import infoCircleOutlined from "@iconify-icons/ant-design/info-circle-outlined";
 
 const TableRow = ({ process, index, running, stopProcess }) => {
   const [show, setShow] = useState(false);
@@ -49,22 +49,20 @@ const TableRow = ({ process, index, running, stopProcess }) => {
               variant="outline-danger"
               on
             >
-              <b>Stop</b> <FaStop />
+              <b>Stop</b>
             </Button>
           )}
         {(process.status === "Completed" ||
           process.status === "Failed" ||
           process.status === "Stopped") && (
           <Button className="disabled" variant="outline-secondary" disabled>
-            Stop <FaStop />
+            Stop
           </Button>
         )}
       </td>
       <td>
         <Button variant="link" onClick={handleShow}>
-          <h4>
-            <Icon icon={infoCircleOutlined} color="#7b7b7b" />
-          </h4>
+          <h4>{/* <Icon icon={infoCircleOutlined} color="#7b7b7b" /> */}</h4>
         </Button>
 
         <Modal
