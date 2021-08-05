@@ -1,7 +1,7 @@
 import Accordion from "react-bootstrap/Accordion";
 import { Card } from "react-bootstrap";
 import { useAccordionToggle } from "react-bootstrap/AccordionToggle";
-// import { FaFilter } from "react-icons/fa";
+import { FaFilter } from "react-icons/fa";
 import Filters from "./Filters";
 import StartProcess from "./StartProcess";
 
@@ -30,7 +30,7 @@ const Filter = ({ filterProcesses, processes, processNames, serverNames }) => {
             Start Process
           </CustomToggle>
           <CustomToggle className="custom-btn-primary" eventKey="0">
-            Filter
+            <FaFilter /> Filter
           </CustomToggle>
         </Card.Header>
         <Accordion.Collapse className="acc-body" eventKey="1">

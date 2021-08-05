@@ -4,7 +4,7 @@ const tableHeadDetails = [
   "Process Name",
   "Instance ID",
   "Status",
-  "Action",
+  // "Stop",
   "Details",
 ];
 

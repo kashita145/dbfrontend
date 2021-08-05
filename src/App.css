@@ -17,15 +17,21 @@
   border-radius: 20px 20px 0px 0px !important;
 }
 
+.monospace {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-weight: 500 !important;
+}
+
 a {
   font-size: 16px !important;
   color: var(--shadow) !important;
   text-decoration: underline !important;
+  font-family: Arial, Helvetica, sans-serif !important;
 }
 
 a:hover {
   transition: all 0.25s ease-in-out !important;
-  color: var(--secondary) !important;
+  color: white !important;
 }
 
 nav {
@@ -38,12 +44,42 @@ nav {
   font-size: 16px !important;
   color: #d9d9dd !important;
   text-decoration: none !important;
+  font-weight: bold !important;
 }
 
-.nav-link:hover {
-  color: var(--bg) !important;
-  background-color: var(--hover-dark);
+.nav-dropdown{
+  margin-right: 40px;
+}
+
+.nav-dropdown-item{
+  color: black !important;
+  padding: 5px 10px;
+}
+
+.dropdown-menu{
+  width: 100px;
+  word-wrap: break-word;
+}
+
+.btn-logout{
+  color: black !important;
+  text-decoration: none !important;
+  font-weight: bold;
+}
+
+.btn-logout:hover{
+  color: red !important;
+}
+
+.active {
+  color: black !important;
+  background-color: var(--bg);
   border-radius: 6px !important;
+  font-weight: bold;
+}
+
+.active:hover{
+  color: black !important;
 }
 
 .custom-brand {
@@ -61,8 +97,8 @@ nav {
   background-color: #fff !important;
   border-radius: 9px !important;
   padding: 18px 25px !important;
-  margin: 18px 0px 30px 0px !important;
-  box-shadow: 0 7px 30px -10px var(--shadow) !important;
+  margin: 18px 50px 30px 50px !important;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
 }
 
 .login-container {
@@ -88,7 +124,7 @@ nav {
   padding: 6px 16px !important;
   margin: 5px;
   border-radius: 8px !important;
-  font-weight: 500 !important;
+  font-weight: bold !important;
   font-size: 14px !important;
 }
 
@@ -105,7 +141,7 @@ nav {
   padding: 6px 16px !important;
   margin: 5px !important;
   border-radius: 8px !important;
-  font-weight: 500 !important;
+  font-weight: bold !important;
   font-size: 14px !important;
 }
 
@@ -241,7 +277,7 @@ nav {
   border-radius: 8px !important;
   margin: auto !important;
 }
-
+/* 
 .dropdown-toggle {
   color: var(--primary) !important;
   background-color: transparent !important;
@@ -251,12 +287,19 @@ nav {
   border-radius: 8px !important;
   font-weight: 500 !important;
   font-size: 14px !important;
+} */
+
+th{
+  background-color: var(--dark);
+  color: white;
+  margin: 20px !important;
 }
 
 td {
   font-size: 15px !important;
   letter-spacing: 0.25px;
   border-color: transparent !important;
+  vertical-align: middle !important;
 }
 
 tr:hover {
@@ -270,6 +313,10 @@ tr:hover {
   margin: 5% auto 0px auto;
   width: 90%;
   border-radius: 8px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 140px;
 }
 
 /* .stopped {
@@ -280,12 +327,18 @@ tr:hover {
 .completed {
   color: green;
   background-color: rgb(219, 247, 179);
+  vertical-align: middle !important;
 }
 
 .failed,
 .stopped {
   color: red;
   background-color: rgb(255, 220, 220);
+}
+
+.running{
+  background-color: rgb(253, 229, 183);
+  color: #e84118;
 }
 
 .footer {
@@ -323,4 +376,82 @@ tr:hover {
 
 .App-link {
   color: #61dafb;
+}
+
+.filter-container {
+  margin: 10px 50px 10px 50px;
+  align-items: center;
+}
+
+/* Summary CSS */
+.summary-table {
+  min-width: 450px;
+  margin: auto;
+  /* width: 50%; */
+}
+
+.status-icon-completed{
+  font-size: 24px;
+  color:green;
+  padding-right:5px !important;
+}
+
+.status-icon-stopped{
+  font-size: 24px;
+  color: red;
+  padding-right:5px !important;
+}
+
+.status-icon-running{
+  font-size: 24px;
+  color: #e84118;
+  padding-right:5px !important;
+}
+.custom-card-row {
+  display: flex;
+  margin: 10px 0px 0px 0px !important;
+  justify-content: center;
+}
+
+.custom-card-icon {
+  vertical-align: middle !important;
+  font-size: 32px !important;
+}
+
+.custom-card-ion-icon{
+  /* background-color: red; */
+  padding: 6px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.custom-card {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #fff;
+  height: 120px;
+  width: 180px;
+  padding: 16px;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  align-items: middle !important;
+}
+
+.custom-card-head {
+  font-size: 14px;
+  font-weight: bolder;
+  margin: 10px 0px 0px 0px;
+}
+
+.custom-card-body {
+  margin: 15px 0px;
+  font-size: 30px;
+  font-weight: bolder !important;
+}
+
+.summary-container {
+  width: 550px !important;
+  justify-content: center !important;
+  margin: auto !important;
 }

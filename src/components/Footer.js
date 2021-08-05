@@ -1,10 +1,9 @@
 import React from "react";
-// import { Icon } from "@iconify/react";
 
 const Footer = () => {
   return (
     <div className="footer">
-      <span className="footer-text-main">RTB </span>Dashboard
+      <span className="footer-text-main">Process Monitoring Tool </span>
       <br />
       Made by <a href="https://github.com/archits581">Archit Shinde</a>,{" "}
       <a href="https://github.com/kashita145/">Kashita Talreja</a> and{" "}

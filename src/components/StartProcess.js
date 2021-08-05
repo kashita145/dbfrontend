@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Button, Col } from "react-bootstrap";
 import axios from "axios";
 import authHeader from "../auth.js";
+import AlertModal from "./AlertModal";
 
 const StartProcess = ({ processNames, serverNames }) => {
   const [server, setServer] = useState("Select Server");
@@ -10,6 +11,12 @@ const StartProcess = ({ processNames, serverNames }) => {
   const [displayProcess, setDisplayProcess] = useState([]);
   const [ipAddress, setIpAddress] = useState();
   const [port, setPort] = useState();
+
+  const [alertMessage, setAlertMessage] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleClose = () => setShowAlert(false);
+  const handleShow = () => setShowAlert(true);
 
   const handleSelectServer = (e) => {
     setServer(e);
@@ -39,16 +46,19 @@ const StartProcess = ({ processNames, serverNames }) => {
   };
 
   const onSubmit = (e) => {
+    console.log("from on submit function");
+
     e.preventDefault();
+    handleShow();
 
     if (server === "Select Server" || process === "Select Process") {
-      alert("Select a server and a process.");
+      setAlertMessage("Select server and process");
       return;
     }
 
     axios
       .post(
-        "http://main-server-process-server-2.apps.123.252.203.198.nip.io/api/server/processes/start",
+        "http://localhost:4000/api/server/processes/start",
         {
           pname: process,
           sip: ipAddress,
@@ -59,10 +69,10 @@ const StartProcess = ({ processNames, serverNames }) => {
         }
       )
       .then((res) => {
-        alert("Process started successfully.");
+        setAlertMessage("Process started successfully.");
       })
       .catch((err) => {
-        alert("Failed to start process");
+        setAlertMessage("Failed to start process");
       });
 
     setServer("Select Server");
@@ -107,6 +117,11 @@ const StartProcess = ({ processNames, serverNames }) => {
         >
           Start
         </Button>
+        <AlertModal
+          show={showAlert}
+          onHide={handleClose}
+          message={alertMessage}
+        />
       </Form>
     </div>
   );
