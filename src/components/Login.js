@@ -29,7 +29,6 @@ function Login() {
         localStorage.setItem("username", response.data.username);
         localStorage.setItem("password", response.data.password);
         localStorage.setItem("designationId", response.data.designationId);
-        localStorage.setItem("lastLogin", response.data.lastLogin);
 
         window.location = "/";
       })

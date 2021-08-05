@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Form, Button, Col } from "react-bootstrap";
 import axios from "axios";
 import authHeader from "../auth.js";
-import AlertModal from "./AlertModal";
 
 const StartProcess = ({ processNames, serverNames }) => {
   const [server, setServer] = useState("Select Server");
@@ -11,12 +10,6 @@ const StartProcess = ({ processNames, serverNames }) => {
   const [displayProcess, setDisplayProcess] = useState([]);
   const [ipAddress, setIpAddress] = useState();
   const [port, setPort] = useState();
-
-  const [alertMessage, setAlertMessage] = useState("");
-  const [showAlert, setShowAlert] = useState(false);
-
-  const handleClose = () => setShowAlert(false);
-  const handleShow = () => setShowAlert(true);
 
   const handleSelectServer = (e) => {
     setServer(e);
@@ -46,13 +39,10 @@ const StartProcess = ({ processNames, serverNames }) => {
   };
 
   const onSubmit = (e) => {
-    console.log("from on submit function");
-
     e.preventDefault();
-    handleShow();
 
     if (server === "Select Server" || process === "Select Process") {
-      setAlertMessage("Select server and process");
+      alert("Select a server and a process.");
       return;
     }
 
@@ -69,10 +59,10 @@ const StartProcess = ({ processNames, serverNames }) => {
         }
       )
       .then((res) => {
-        setAlertMessage("Process started successfully.");
+        alert("Process started successfully.");
       })
       .catch((err) => {
-        setAlertMessage("Failed to start process");
+        alert("Failed to start process");
       });
 
     setServer("Select Server");
@@ -117,11 +107,6 @@ const StartProcess = ({ processNames, serverNames }) => {
         >
           Start
         </Button>
-        <AlertModal
-          show={showAlert}
-          onHide={handleClose}
-          message={alertMessage}
-        />
       </Form>
     </div>
   );

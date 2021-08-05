@@ -5,29 +5,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
 import Dashboard from "./components/Dashboard";
+import Footer from "./components/Footer";
 import Login from "./components/Login";
-import AlertModal from "./components/AlertModal";
-import Summary from "./components/Summary";
 import authHeader from "./auth.js";
-
-let completedProcesses = 0;
-let runningProcesses = 0;
-let stoppedProcesses = 0;
 
 function App() {
   const MAIN_SERVER = "http://localhost:4000/";
 
-  const [userData, setUserData] = useState({});
   const [processes, setProcesses] = useState([]);
   const [processNames, setProcessNames] = useState([]);
   const [serverNames, setServerNames] = useState([]);
-  const [summaryProcesses, setSummaryProcesses] = useState([]);
-
-  const [alertMessage, setAlertMessage] = useState("");
-  const [showAlert, setShowAlert] = useState(false);
-
-  const handleClose = () => setShowAlert(false);
-  const handleShow = () => setShowAlert(true);
 
   const [filters, setFilters] = useState({
     processName: "",
@@ -56,28 +43,22 @@ function App() {
 
   const stopProcess = (serverId, osId) => {
     console.log(serverId, osId);
-    setShowAlert(true);
-    // const msg = ;
+    const msg = {
+      osId: osId,
+      serverIp: serverId.ipAddress,
+      serverPort: serverId.port,
+    };
+
+
     axios
-      .post(
-        "http://main-server-node-main-server.apps.123.252.203.198.nip.io/api/server/processes/stop",
-        {
-          osId: osId,
-          serverIp: serverId.ipAddress,
-          serverPort: serverId.port,
-        },
-        {
-          headers: authHeader(),
-        }
-      )
+      .post("http://main-server-node-main-server.apps.123.252.203.198.nip.io/api/server/processes/stop", msg, {  headers: 
+      authHeader()
+    })
       .then((res) => {
-        // alert("Process stopped succesfully");
-        setAlertMessage("Process Stopped succesfully");
+        alert("Process stopped succesfully");
       })
       .catch((err) => {
-        // alert("Failed to stop process");
-        console.log(err);
-        setAlertMessage("Failed to stop process");
+        alert("Failed to stop process");
       });
   };
 
@@ -109,36 +90,6 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  // get processDetails for summary page
-  useEffect(() => {
-    axios
-      .get("http://main-server-node-main-server.apps.123.252.203.198.nip.io/api/server/processes/summary", {
-        headers: authHeader(),
-      })
-      .then((resp) => {
-        setSummaryProcesses(resp.data);
-        console.log(resp.data);
-      })
-      .catch((err) => {
-        console.log("Failed to fetch process summary");
-      });
-
-    const interval = setInterval(() => {
-      axios
-        .get("http://main-server-node-main-server.apps.123.252.203.198.nip.io/api/server/processes/summary", {
-          headers: authHeader(),
-        })
-        .then((resp) => {
-          setSummaryProcesses(resp.data);
-          console.log(resp.data);
-        })
-        .catch((err) => {
-          console.log("Failed to fetch process summary");
-        });
-    }, 15 * 1000);
-    return () => clearInterval(interval);
-  }, []);
-
   //get request for all process names - stored in processNames
   useEffect(() => {
     axios
@@ -154,7 +105,7 @@ function App() {
   //get request for all server names - stored in serverNames
   useEffect(() => {
     axios
-      .get("http://main-server-node-main-server.apps.123.252.203.198.nip.io/http://main-server-node-main-server.apps.123.252.203.198.nip.io/api/server/processes/serverList")
+      .get("http://main-server-node-main-server.apps.123.252.203.198.nip.io/api/server/processes/serverList")
       .then((resp) => {
         setServerNames(resp.data);
       })
@@ -163,27 +114,10 @@ function App() {
       });
   }, []);
 
-  useEffect(() => {
-    completedProcesses = 0;
-    runningProcesses = 0;
-    stoppedProcesses = 0;
-    for(process of processes){
-      if(process.status === 'Completed') completedProcesses ++;
-      else if(process.status === 'In Progress') runningProcesses ++;
-      else stoppedProcesses ++;
-    }
-    
-  })
-
   return (
     <Router>
-      <Route path="/login" exact >
-        <Login user={userData} />
-      </Route>
+      <Route path="/login" exact component={Login} />
       <Route path="/" exact>
-        <Summary processes={summaryProcesses} count={{completed: completedProcesses, running: runningProcesses, stopped: stoppedProcesses}} />
-      </Route>
-      <Route path="/logs" exact>
         <Dashboard
           filterProcesses={filterProcesses}
           processes={processes}
@@ -192,9 +126,7 @@ function App() {
           filters={filters}
           stopProcess={stopProcess}
         />
-        <AlertModal show={showAlert}
-          onHide={handleClose}
-          message={alertMessage} />
+        
       </Route>
     </Router>
   );

@@ -29,31 +29,32 @@ const Dashboard = ({
   //if (localStorage.getItem("token")=== null) <Redirect to="/login" />;
 
   return (
-    <div className="App">
-      <MyNavbar text="Logout" />
-      <div className="page-heading monospace">Process Logs</div>
-      <div className="filter-container">
+      <div className="App">
+        <MyNavbar text="Logout" />
+        <div className="page-heading">Dashboard</div>
+        <div className="fluid-container"> </div>
         <Filter
           filterProcesses={filterProcesses}
           processes={processes}
           processNames={processNames}
           serverNames={serverNames}
         />
+        <div className="custom-container">
+          <h3>Process Logs</h3>
+          <br />
+          <Table responsive hover className="text-center">
+            <TableHead />
+            <TableRows
+              processes={processes}
+              running={true}
+              filters={filters}
+              stopProcess={stopProcess}
+            />
+          </Table>
+          
+        </div>
+        <Footer />
       </div>
-      <div className="custom-container">
-        <br />
-        <Table responsive hover className="text-center">
-          <TableHead />
-          <TableRows
-            processes={processes}
-            running={true}
-            filters={filters}
-            stopProcess={stopProcess}
-          />
-        </Table>
-      </div>
-      <Footer />
-    </div>
   );
 };
 

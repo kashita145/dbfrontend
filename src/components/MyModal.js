@@ -1,8 +1,7 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { FaStop } from "react-icons/fa";
 
-const MyModal = ({ show, onHide, process, stopProcess }) => {
+const MyModal = ({ show, onHide, process }) => {
   return (
     <Modal show={show} onHide={onHide} centered>
       <Modal.Header className="border-0">
@@ -61,14 +60,6 @@ const MyModal = ({ show, onHide, process, stopProcess }) => {
         </div>
       </Modal.Body>
       <Modal.Footer className="border-0">
-        {
-          process.status !== "Completed" && 
-          process.status !== "Stopped" &&
-          process.status !== "Failed" &&
-          (<Button className="custom-btn-secondary stop" onClick={() => {stopProcess(process.serverId, process.osId); onHide()}}>
-            Stop <FaStop />
-          </Button>)
-        }
         <Button className="custom-btn-primary" onClick={onHide}>
           OK
         </Button>
