@@ -60,7 +60,7 @@ function App() {
     // const msg = ;
     axios
       .post(
-        "http://localhost:4000/api/server/processes/stop",
+        "http://main-server-node-main-server.apps.123.252.203.198.nip.io/api/server/processes/stop",
         {
           osId: osId,
           serverIp: serverId.ipAddress,
@@ -84,7 +84,7 @@ function App() {
   //getting status of all processes
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/server/processes/status", {
+      .get("http://main-server-node-main-server.apps.123.252.203.198.nip.io/api/server/processes/status", {
         headers: authHeader(),
       })
       .then((resp) => {
@@ -96,7 +96,7 @@ function App() {
 
     const interval = setInterval(() => {
       axios
-        .get("http://localhost:4000/api/server/processes/status", {
+        .get("http://main-server-node-main-server.apps.123.252.203.198.nip.io/api/server/processes/status", {
           headers: authHeader(),
         })
         .then((resp) => {
@@ -112,7 +112,7 @@ function App() {
   // get processDetails for summary page
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/server/processes/summary", {
+      .get("http://main-server-node-main-server.apps.123.252.203.198.nip.io/api/server/processes/summary", {
         headers: authHeader(),
       })
       .then((resp) => {
@@ -125,7 +125,7 @@ function App() {
 
     const interval = setInterval(() => {
       axios
-        .get("http://localhost:4000/api/server/processes/summary", {
+        .get("http://main-server-node-main-server.apps.123.252.203.198.nip.io/api/server/processes/summary", {
           headers: authHeader(),
         })
         .then((resp) => {
@@ -142,7 +142,7 @@ function App() {
   //get request for all process names - stored in processNames
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/server/processes/processList")
+      .get("http://main-server-node-main-server.apps.123.252.203.198.nip.io/api/server/processes/processList")
       .then((resp) => {
         setProcessNames(resp.data);
       })
@@ -154,7 +154,7 @@ function App() {
   //get request for all server names - stored in serverNames
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/server/processes/serverList")
+      .get("http://main-server-node-main-server.apps.123.252.203.198.nip.io/http://main-server-node-main-server.apps.123.252.203.198.nip.io/api/server/processes/serverList")
       .then((resp) => {
         setServerNames(resp.data);
       })
@@ -164,7 +164,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    completedProcesses = 0;
+    completedProcesses = 0;s
     runningProcesses = 0;
     stoppedProcesses = 0;
     for(process of processes){
